@@ -8,3 +8,11 @@ function hoverVideo(e) {
 function hideVideo(e) {
     $('video', this).get(0).pause();
 }
+
+
+//clear form entries on reload
+window.onbeforeunload = () => {
+    for(const form of document.getElementsByTagName('form')) {
+      form.reset();
+    }
+  }
