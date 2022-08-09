@@ -4,7 +4,7 @@ This is a site I created to showcase some of my software skills and a selection 
 
 ### Technologies
 ***
-HTML
-Bootstrap
-Javascript
-FormSpree
+* HTML
+* Bootstrap
+* Javascript
+* FormSpree
