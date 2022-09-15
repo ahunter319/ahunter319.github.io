@@ -94,7 +94,7 @@ a {
 
 /* Play video on hover */
 .video {
-  maw-width: 100%;
+  max-width: 100%;
   height: auto;
 }
 
@@ -106,9 +106,8 @@ video::-webkit-media-controls {
 
 /* Circle Image */
 .circle_img {
-    height:30%; 
-    width: 30%; 
-    display: block;
+    height:300px; 
+    width: 300px; 
     border-radius: 100%;
     overflow: hidden;
 }
