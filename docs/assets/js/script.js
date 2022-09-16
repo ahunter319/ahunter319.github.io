@@ -1,4 +1,5 @@
 //to play videos on hover
+// borrowed from https://codepen.io/gil411e8085ef/pen/bNxZWg
 var figure = $(".video").hover( hoverVideo, hideVideo );
 
 function hoverVideo(e) {
