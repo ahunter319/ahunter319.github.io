@@ -34,6 +34,9 @@ a {
     text-decoration:none;
 }
 
+/* for getting current year */
+#year 
+
 /* recoloring bootstrap primary button */
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
     background-color: #189AB4 !important;
