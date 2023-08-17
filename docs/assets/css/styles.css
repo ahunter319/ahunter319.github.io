@@ -35,6 +35,11 @@ a {
     color: #75E6DA;
 }
 
+object {
+    min-height: 490px;
+    width: 100%;
+}
+
 /* for getting current year */
 #year 
 
@@ -68,6 +73,10 @@ a {
     color:#050A30;
 }
 
+.teal-border {
+    border: 2px solid #75E6DA;
+  border-radius: 7.5px;
+}
 
 /* Sizing for features grid */
 @media (min-width: 1200px) {
