@@ -69,10 +69,9 @@ object {
 }
 
 .dark-font {
-    font-weight: 400;
-    font-size: 100%;
     color: #050A30;
 }
+
 .yard {
     background-color:#75E6DA;
     color:#050A30;
