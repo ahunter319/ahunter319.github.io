@@ -43,16 +43,12 @@
         </ul>
 
         <div class="video-container">
-            <video controls muted loading="lazy" controlsList="nodownload">
-                <source src="videos/cat_demo_01.mp4" type="video/mp4">
-            </video>
+            <iframe width="840" height="473" src="https://www.youtube.com/embed/7ghSYLynEyI?si=KcZCzwuQ9L1SYn_j" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         <p class="caption">Demo video showing the Player Character's various abilities.</p>
 
         <div class="video-container">
-            <video controls muted loading="lazy" controlsList="nodownload">
-                <source src="videos/ZC_BuffDebuffEffects.mp4" type="video/mp4">
-            </video>
+            <iframe width="840" height="473" src="https://www.youtube.com/embed/sTwVAZkdAGo?si=T8EIoaOLWWrhi37j" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         <p class="caption">Demo video showing the different buff/debuff Effects the Cat can receive through gameplay.</p>
 
@@ -105,9 +101,7 @@
         <p>I created a modular and randomized idling system, where the cat will sit down and select random idle animations to play at random intervals. This avoided the monotony of a single idling animation and makes it easy to add, remove or otherwise edit the animations used. This also makes it so that if the Player is using Photo Mode, their cat will sit and essentially pose for the camera!</p>
 
         <div class="video-container">
-            <video controls muted loading="lazy" controlsList="nodownload">
-                <source src="videos/cat_idle.mp4" type="video/mp4">
-            </video>
+            <iframe width="840" height="473" src="https://www.youtube.com/embed/a4UInGj_QII?si=7SGCvs3rInO-Eew-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
 
         <p>To implement this I added a few functions to check which stage of idling, if any, the cat was in. For instance if it's just entered prolonged idle, it will start the Prolonged Idle montage from the first animation, in which the cat sits down. If the cat has already been in the prolonged idle mode, it sets a random timer where upon completion a random choice from the remaining sections of the montage is selected.</p>
