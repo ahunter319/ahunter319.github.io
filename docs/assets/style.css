@@ -1,1 +1,135 @@
+body {
+    padding-left: 120px;
+    padding-right: 120px;
+    padding-top: 40px;
+    padding-bottom: 40px;
 
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 400;
+    font-size: 100%;
+    color: #050A30;
+
+    overflow: auto;
+}
+
+p {
+    font-size: 150%;
+}
+
+h1, h2, h3, h4, h5 {
+    border: 0px;
+    margin: 0px;
+}
+
+h1 {
+    color: #4aa4b0;
+    font-weight:400;
+    padding-top: 10px;
+    padding-bottom:20px;
+    margin:0px;
+}
+
+h2 {
+    font-size: 180%;
+}
+
+a {
+    text-decoration: none;
+    color: #4aa4b0;
+    padding-left: 5px;
+    font-size: 100%;
+}
+
+li {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 130%;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+pre {
+    overflow-x:auto;
+    font-family: monospace;
+    border-radius: 4px;
+    background: #eceef3;
+}
+
+.code-comment {
+    color: #138420;
+}
+
+.tealfont {
+    color: #4aa4b0;
+}
+
+.calloutfont {
+    color: #4aa4b0;
+    font-weight: 800;
+}
+
+.smallfont {
+    color:grey;
+    font-weight: 400;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.bigitem {
+    flex-grow: 2;
+}
+
+.topic {
+    padding-bottom: 10px;
+}
+
+
+.andada-pro {
+  font-family: "Andada Pro", serif;
+  font-optical-sizing: auto;
+}
+
+.photo {
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+}
+
+.photogrid {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 5px;
+}
+
+@media (max-width:900px) {
+    .photogrid {
+        grid-template-columns: auto;
+    }
+}
+    
+.caption {
+    color:rgba(33, 36, 36, 0.637);
+    font-weight: 300;
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.codeblock {
+    background: #2c2e3d;
+    color: #ccd0e7;
+}
