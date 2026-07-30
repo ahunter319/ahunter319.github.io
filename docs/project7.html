@@ -1,0 +1,180 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alyssa Hunter</title>
+
+    <link href="assets/style.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Andada+Pro:ital,wght@0,400..840;1,400..840&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!--   Fetching Header-->
+    <div id="header"></div>
+
+    <main>
+      <div class="topic">
+        <h1>Zappy Cats: Character Models</h1>
+        
+        <div class="photogrid">
+            <img class="photo" src="images/proj7/ZC_Characters_panels.png" alt="character models">
+        </div>
+        <p class="tealfont"><svg style="vertical-align:middle" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wrench" viewBox="0 0 16 16">
+                <path d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364zm13.37 9.019.528.026.287.445.445.287.026.529L15 13l-.242.471-.026.529-.445.287-.287.445-.529.026L13 15l-.471-.242-.529-.026-.287-.445-.445-.287-.026-.529L11 13l.242-.471.026-.529.445-.287.287-.445.529-.026L13 11z"/>
+                </svg> Blender, Procreate, UE5 Material Graph</p>
+
+        <h2>Design Goals...</h2>
+        <p>Zappy Cats is a silly game and the playable character is a cat, so naturally the enemy character had to be a rat. To make the levels feel more alive I added animals that made sense for their environment. I was inspired by the series of sky levels in the game "Frogger: He's Back!", where part of the level involves riding around on birds. The Sky Ruins level was the first to get a rideable animal, but I soon made one for the other levels as well. It was both a challenging gameplay mechanic and a way to liven up the world.</p>
+
+        <h2>Characters...</h2>
+        <ul>
+            <li>The playable character is a <span class="calloutfont">Cat</span> with 17 different coat variations for Players to chose from</li>
+            <li>The main enemy is a Rat, which spawns with either a white, brown, grey, or black coat</li>
+            <li>The <span class="calloutfont">Snail</span> is a rideable character in the Lava Caves level</li>
+            <li>The <span class="calloutfont">Sea Turtle</span> is a rideable character in the Pirate Cove level</li>
+            <li>The <span class="calloutfont">Vulture</span> is a rideable character in the Sky Ruins level, inspired by bearded vultures!</li>
+            <li>There are two color variations for the <span class="calloutfont">Bird</span>. Tropical variation is rideable in Pirate Cove, and the Red variation is used decoratively in the Sky Ruins level</li>
+        </ul>
+        
+        <div class="photogrid">
+            <img src="images/proj7/ZC_Char_Cat_Light.png" class="photo" alt="Cat model">
+            <img src="images/proj7/ZC_Char_Cat_Dark.png" class="photo" alt="Cat in the Dark">
+        </div>
+        <p class="caption">Various animations of the cat model. The eye color can be chosen by the player and determines the color of the VFX spawned by the cat!</p>
+
+        <div class="photogrid">
+            <img src="images/proj7/ZC_Char_Rat_Light.png" class="photo" alt="rat model">
+            <img src="images/proj7/ZC_Char_Rat_Dark.png" class="photo" alt="rat in the Dark">
+        </div>
+        <p class="caption">Various animations of the rat model. The glowing eyes makes them easier to spot in darker areas.</p>
+
+        <div class="photogrid">
+            <img src="images/proj7/ZC_Char_Snail_Light.png" class="photo" alt="snail model">
+            <img src="images/proj7/ZC_Char_Turtle.png" class="photo" alt="sea turtle model">
+        </div>
+        <p class="caption">(L) Lava Snail, I made the shell with Blender Geometry Nodes (R) Hand painted Sea Turtle</p>
+
+        <div class="photogrid">
+            <img src="images/proj7/ZC_Char_Vulture.png" class="photo" alt="vulture model">
+            <img src="images/proj7/ZC_Vulture_closeup.png" class="photo" alt="close up of vulture">
+        </div>
+        <p class="caption">(L) Bearded Vulture. Hand painted. Legs omitted intentionally. (R) Perhaps a bit more creepy than cute...</p>
+        
+        <div class="photogrid">
+            <img src="images/proj7/ZC_Char_TropBird.png" class="photo" alt="tropical bird model">
+            <img src="images/proj7/ZC_Char_FireBird.png" class="photo" alt="red bird model">
+        </div>
+        <p class="caption">(L) Tropical Bird (R) Red variation</p>
+
+        <h2>Approach...</h2>
+
+        <p>I had some decent practice in Blender before starting work for this game, but I'm by no means an expert. Early on I decided the visual style of this game would be 'mid-poly' and stylized, rather than going for realism. I picked a style I knew I could acheive, and it was just a bonus that it suited the game's silly nature!</p>
+
+        <p>I did all of the sculpting, retopologizing, texturing, and animating in Blender. For the Cat and Rat I was able to use Meta rigs to quickly get them set up for animation. For the other animals I placed the bones by hand and didn't bother with a rig since I knew they only needed a few simple animations.</p>
+
+        <p>I put more work into the cat since it's seen the most. It's used for the playable character but also all of the NPCs, so it had to look cute! It also has the most animations since it had to have all movements, interactions, idling, and NPC actions. For these I tried to find as many reference photos and videos of cats moving as I could, and supplemented by watching my own cat, Franklin.</p>
+
+        <p>For the Rat, it had to be able to move around, attack, and react to damage. I used a few reference photos for its running cycle and used my best guess for the rest of it. The other animals only needed basic movement and an idle animation.</p>
+
+        <p>For all of the animations I tried to follow the basic principles of animation, especially anticipation and follow through. That said, I quickly learned that animating for film is different then animating for games. The best example I can give for this is when I was animating the cat jumping. At first I didn't realize that it needed to be done in stages rather than one full animation. The Player presses space to jump and the cat jumps into the air. Then, because this is a game with gravity, the cat falls for however long it takes to land. This can be any length of time, so the initial jump up, falling, and landing animations needed to be made seperately.
+            
+        <p>I ended up redoing the jump animations several times until they felt right as a sequence in the game, even if it wasn't the most realistic. But this let me add a double jump and a backflip without having to redo the entire ground-to-air sequence. I also made sure the jump up animation blended well with the run animation, since this was the most common sequence in gameplay. </p>
+
+
+        <h2>Customization...</h2>
+
+        <p>For the Playable Character I wanted to give the player options for coat color, eye color, and name. This meant I had to paint a bunch of different coat colors! I knew players might want to pick a coat that resembeled their own pets, so I had to make sure I gave as many options as I could manage in the time frame. I also wanted to encourage players to explore, so I hid unlockable coat colors around the levels.</p>
+        <div class="photogrid">
+            <img src="images/proj7/ZC_CatCreator.png" class="photo" alt="cat creator screen">
+        </div>
+        <p>The Cat Creator Menu appears when Players first start a new game. They can return to the Menu to change their cat at any time. I won't go into the implementation details here, but if you're curious about it I'd be happy to chat.</p>
+
+        <p>I used Blender to paint the cat's face and the basic markings for the black and white tuxedo cat. Once I had all the features mapped out I brought the texture into Procreate and painted all the variations.</p>
+
+        <div class="photogrid">
+            <img src="images/proj7/ZC_CatCoats_Standard.png" class="photo" alt="standard cat colors">
+            <img src="images/proj7/ZC_CatCoats_Special.png" class="photo" alt="special cat colors">
+        </div>
+        <p class="caption">(L) Standard variations of cat coat including three solid colors, three dual colors, three tabby colors, plus a calico, siamese, and tortoiseshell. (R) Special cat coats only unlockable by finding them in the levels. Includes a rainbow tabby, red and white abstract tabby, stars and moons, pink hearts, and snow leopard variations.</p>
+        
+        
+        <h2>Refinement...</h2>
+
+        <p>Getting the cat's eyes to blink was a bit of a challenge since I didn't actually sculpt any facial features onto the character model. It doesn't have "eyes" to blink! Everything is painted on the base texture so I had to use a combination of the cat's Material and the playable Cat's blueprint to create the illusion of blinking.</p> 
+        
+        <p>I had already made a texture with just the eyes to use for the emissive output in the cat's material, so I painted another with just the eyes closed. Next I added a linear interpolation node in the Material graph to blend between the two textures. I set up a variable to control the blend amount called "BlinkRate".</p>
+
+        <div class="photogrid">
+            <img src="images/proj7/blink_01.png" class="photo" alt="blink material">
+            <img src="images/proj7/blink_02.png" class="photo" alt="blink material">
+        </div>
+        <p class="caption">Exerpts from the Cat's Material graph. (L) The blend betweeen open and closed eye textures is cached to use in later calculations. NOTE, to improve performance the NPC's only Blink while the Player is talking to them, hence the IF check here to turn Blinking on/off. (R) Emissive eye color is determined by Player and used here with the cached result of eye texture blend.</p>
+
+        <p>Next, in the Cat's C++ file, I created a dynamic material instance and made it accessible in Blueprints. This is used to apply the User's saved preferences for coat and eye color. I handled that with the following function, which is called at the begining of gameplay.</p>
+        <pre>
+            <code>
+            void ABaseCat::SetCosmeticsToSavedValues()
+            {
+                <span class="code-comment">// Set cat coat and eye color to saved values</span>
+                if (ISaveGameInterface* SaveGameInterface = Cast&ltISaveGameInterface&gt(GetGameInstance()))
+                {
+                    FCatProps CatProps = SaveGameInterface->GetCatProps();
+
+                    UMaterialInterface* ParentMaterial = GetMesh()->GetMaterial(0);
+                    CatDynamicMaterialInstance = UMaterialInstanceDynamic::Create(ParentMaterial, this);
+
+                    GetMesh()->SetMaterial(0, CatDynamicMaterialInstance);
+
+                    CatDynamicMaterialInstance->SetVectorParameterValue(TEXT("EyeColor"), CatProps.LaserColor);
+                    CatDynamicMaterialInstance->SetScalarParameterValue(TEXT("BlinkEyes"), 1.f);
+                    LaserColor = CatProps.LaserColor;
+
+                    if (!CatProps.CoatTexture) return;
+                    CatDynamicMaterialInstance->SetTextureParameterValue(TEXT("FurTexture"), CatProps.CoatTexture);
+                }
+            }
+</code>
+</pre>
+
+        <p>The Cat's Blueprint uses the function Blink() to set the "BlinkRate" parameter on the dynamic material instance.</p>
+
+         <div class="photogrid">
+            <img src="images/proj7/blink_06.png" class="photo" alt="blink material">
+        </div>
+        <p class="caption">Here we've set the BlinkRate to the dynamic value "EyeBlink" output by the timeline. When the blink is completed, it selects a random time to wait before blinking again.</p>
+
+
+        <h2>Retrospective...</h2>
+       <p>It was a lot of fun making all the characters and assets for this game! Of course I can always do better, and these models certainly have a lot of room for improvement. But I managed to keep the poly count relatively low for each one, and their animations while not always perfectly accurate are still believable.</p>
+       
+       <p>There's a lot more I could've done with these characters, like making some NPCs you can actually talk to or making more enemy types like snakes or spiders! But I wanted to actually finish the game, and that meant sacrificing some creativity. Where the models lack in realism or refinement, they make up for by livening the worlds and providing interesting traversal mechanics. Just like I set out to do!</p>
+
+       <h1><a href="index.html">BACK</a></h1>
+      </div> 
+    </main>
+    <div id="footer"></div>
+</body>
+
+<script>
+    // get header
+    fetch('components/header.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('header').innerHTML = data;
+    });
+
+    // get footer
+    fetch('components/footer.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('footer').innerHTML = data;
+    });
+    </script>
+</html>

@@ -1,0 +1,133 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alyssa Hunter</title>
+
+    <link href="assets/style.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Andada+Pro:ital,wght@0,400..840;1,400..840&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!--   Fetching Header-->
+    <div id="header"></div>
+
+    <main>
+      <div class="topic">
+        <h1>Zappy Cats: Puzzles and Obstacles</h1>
+        
+        <div class="photogrid">
+            <img class="photo" src="images/proj4/obstacles_panels.png" alt="obstacles">
+        </div>
+        <p class="tealfont"><svg style="vertical-align:middle" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wrench" viewBox="0 0 16 16">
+                <path d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364zm13.37 9.019.528.026.287.445.445.287.026.529L15 13l-.242.471-.026.529-.445.287-.287.445-.529.026L13 15l-.471-.242-.529-.026-.287-.445-.445-.287-.026-.529L11 13l.242-.471.026-.529.445-.287.287-.445.529-.026L13 11z"/>
+                </svg> C++, UE5 Blueprints</p>
+
+        <h2>Design Goals...</h2>
+        <p >I wanted the puzzles and obstacles for Zappy Cats to feel dangerous enough that the Player knew to be careful, but not so much that they were scary. The game is meant to be silly and fun, so the obstacles had to suit that. </p>
+
+        <h2>Features...</h2>
+        <ul>
+            <li>Swinging axes and maces with <span class="calloutfont">variable swing speed</span> and damage amount</li>
+            <li>Modular spinning blade towers with variable rotation speed and damage amount. Player can stand atop them safely but will take damage from the edges of the blades</li>
+            <li>Floor spikes that can rise up and down at random or on a <span class="calloutfont">timed pattern</span>, depending on designer's choice</li>
+            <li>Spontaneously combusting <span class="calloutfont">fire jets</span> inspired by the fire swamp from the Princess Bride</li>
+            <li>Pressable, shootable, and shockable <span class="calloutfont">buttons</span> which require different Player interactions to activate, creating oportunities for a variety of puzzles</li>
+            <li> <span class="calloutfont">Destructible obstacles</span> Player can shoot to destroy in order to unblock paths</li>
+            <li>Moving Platforms, and <span class="calloutfont">Jump Rings</span> to launch the Player across vast distances, optionally enabled through buttons/puzzles</li>
+            <li>Enemy <span class="calloutfont">Satellite</span> that rotates while tracking Player's location and fires lasers</li>
+            <li>Free standing and wall-mounted <span class="calloutfont">cannons</span> that fire canonballs at the Player</li>
+            <li>Various types of <span class="calloutfont">forcefields</span> to block paths or apply gameplay effects</li>
+        </ul>
+        
+        <div class="video-container">
+            <video controls muted loading="lazy" controlsList="nodownload">
+                <source src="videos/ZC_Obstacles.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <h2>Approach...</h2>
+
+        <p>My focus when coding all of these different elements was to give myself tools that were versatile and modular, so that I would have more choices to craft unique moments in the game. I created each C++ class knowing I was going to extend them in Blueprints and that I would want access to certain variables and functions. Being both the programmer and designer was really helpful in this case!</p>
+
+        <div class="photogrid">
+            <img class="photo" alt="class diagram" src="images/proj4/ZC_puzzles_graph.png">
+        </div>
+        <p class="caption">Simplified class diagram showing the relationship between classes used to create puzzles.</p>
+
+        <p>I created three base classes to help me craft unique obstacles and puzzles. The <span class="calloutfont">Activatable Base</span> class is used for any actor that needs to be activated or deactivated by some player action. The Jump Rings, Moving Platforms, Floor Spikes, and many others all use this class as their parent in their Blueprints.</p> 
+            
+        <p>The <span class="calloutfont">Activation Switch</span> class is used for the different buttons in the game. But it's set up so that it would be easy to add other switch types like a lever or keypad. It inherits from the Item class so that Player interaction is already built in.</p>  
+            
+        <p> The Activation Switch and Activatable Base classes made it easy to set up direct one to one puzzles, where you press a button and something activates, but I wanted to make more complex systems. I created the <span class="calloutfont">Switch Monitor</span> class to manage groups of switches and their targets. This way a puzzle could involve mutliple switches that may need to be set in a certain pattern in order to activate or deactivate a collection of objects. It also saves the state of its targets, so that if the Player has already solved a puzzle they don't need to do it again when returning to a saved game.</p>
+
+        <p>The Switch Monitor also handles how buttons are meant to be interacted with, such as which switches in a puzzle are supposed to be on and which ones off. It can also check every switch instantly, or give the Player a time limit before it checks. If the pattern is incorrect it will reset the switches so the Player has a fresh start to try again.</p>
+
+        <h2>Variation...</h2>
+        <p>For obstacles that need to be moving or otherwise active when the player reaches them, I extended Unreal's TriggerBox class to trigger each obstacles' "On" state when the player entered the trigger volume. I added a few options for constant activation or a timed switch between active/inactive states. I used this to activate the swinging axes, fire jets, and spike plates.</p>
+
+        <p>To create the Enemy Satellite and Cannons, I created Blueprint classes that inherited from my<a href="project3.html">Enemy Manager</a> and AutoShooter classes, respectively. The satellite uses a collision sphere to detect the player and begin attacking, and the cannon uses a Pawn Sensing Component. Both will fire projectiles at the Player as long as they are in range and visible. The Satellite serves as the manager for the enemies in the Space Diner level, as well as providing another obstacle to overcome.</p>
+
+        <h2>Refinement...</h2>
+        <p>The following are <span class="calloutfont">Spoiler Alerts!</span> When designing the levels I tried to create puzzles and obstacles that were both challenging and fun. I anticipated where Players might get frustrated or confused, and added subtle hints to help them through. These were mainly visual hints, though some of the NPCs give verbal hints as well.</p>
+
+        <div class="photogrid">
+            <img src="images/proj4/ZC_MapHint_01.png" class="photo" alt="Map hint 1">
+            <img src="images/proj4/ZC_MapHint_03.png" class="photo" alt="Map hint 2">
+        </div>
+        <p class="caption">(L) A four button puzzle that requires a certain pattern to activate the moving platform (the wooden circle in the middle). (R) Players can explore to find this treasure map, which shows the correct button states.</p>
+
+        <p>Creating obstacles in the Space level was a unique challege as I couldn't use jump-based platforming. The Player flies around on a donut in this level, so one of the things I did was to create a Forcefield that disables this ability.</p>
+        <div class="photogrid">
+            <img src="images/proj4/ZC_SpacePuzzle.png" class="photo" alt="Image of puzzle in space">
+            <img src="images/proj4/ZC_SpaceButtons.png" class="photo" alt="Image of buttons">
+        </div>
+        <p class="caption">(L)The purple forcefield disables the player's ability to ride donuts. They must disable it to progress. (R) The buttons must be activated in a certain pattern. Observant Players will find this easy by using the cluster of red and blue stars, which map out the buttons, as a guide.</p>
+
+        <div class="photogrid">
+            <img src="images/proj4/ZC_BrokenTrees_01.png" class="photo" alt="Photo of broken trees">
+            <img src="images/proj4/ZC_cannonPath.png" class="photo" alt="Photo of broken trees">
+        </div>
+        <p class="caption">(L) Broken trees warn the Player of the dangerous spinning blades. (R) They were also used to warn about nearby cannons.</p>
+
+    <div class="photogrid">
+            <img src="images/proj4/ZC_ButtonPuzzle_01.png" class="photo" alt="Four Button puzzle">
+        </div>
+        <p class="caption">(L) Another four button puzzle. Each of the hexagonal rocks has a button on its side, two aren't visible here due to the camera angle. To solve this puzzle and deactivate the forcefield (the blue wall in the background), players must activate the correct buttons within a time limit. I used glowing blue spores and mushrooms throughout this level to signify electric activity. You can see the spores are only on three of the four rocks, implying those buttons are the ones that need to be activated.</p>
+
+        <h2>Retrospective...</h2>
+        <p>It was pretty easy to create unique puzzles once I got all of the base classes working. That said, there's always room for improvement. One thing I'd do differently is the buttons. They all inherit from the Item class because it has Player interaction already set up, but only the pressable button actually needs this! I added the shockable and shootable buttons after already setting up pressable buttons, so that's why I just used the same parent. But it would've made more sense to create an interface for buttons and switches, or to just use the "Interaction Interface" I'd already created for interactible items, that way the different types wouldn't need to use the same parent class.</p>
+
+        <p>I wanted to do more with the Space level, but it was a challenge to come up with obstacles and platforming that didn't rely on the Player needing to jump. Unreal has a "Custom Gravity Zone" plugin that would've been cool to try out here. With it you could set up some neat gravity puzzles. Maybe next time!</p>
+
+        <h1><a href="index.html">BACK</a></h1>
+      </div> 
+
+        
+    </main>
+    <div id="footer"></div>
+</body>
+
+<script>
+    // get header
+    fetch('components/header.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('header').innerHTML = data;
+    });
+
+    // get footer
+    fetch('components/footer.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('footer').innerHTML = data;
+    });
+    </script>
+</html>

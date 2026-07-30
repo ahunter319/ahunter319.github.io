@@ -1,0 +1,151 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alyssa Hunter</title>
+
+    <link href="assets/style.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Andada+Pro:ital,wght@0,400..840;1,400..840&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!--   Fetching Header-->
+    <div id="header"></div>
+
+    <main>
+      <div class="topic">
+        <h1>Zappy Cats: Character Design</h1>
+        <div class="photogrid">
+                    <img src="images/proj1/ZC_Cat_Panels.png" class="photo" alt="project 1 image">
+                </div>
+        <p class="tealfont"><svg style="vertical-align:middle" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wrench" viewBox="0 0 16 16">
+                <path d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364zm13.37 9.019.528.026.287.445.445.287.026.529L15 13l-.242.471-.026.529-.445.287-.287.445-.529.026L13 15l-.471-.242-.529-.026-.287-.445-.445-.287-.026-.529L11 13l.242-.471.026-.529.445-.287.287-.445.529-.026L13 11z"/>
+                </svg> C++, Unreal Engine 5 Blueprints</p>
+
+        <h2>Design Goals...</h2>
+        <p >Zappy Cats is a 3D puzzle platformer designed for self-paced exploration. I created a character Players would want to spend time as by first making it a cat, and then giving it exciting movements, broad interaction abilities, and expressive reactions to gameplay. Players can also experience the lazier side of cats and let it sit and entertain them with different idle animations, or switch into PhotoMode to take pictures of their surroundings.</p>
+
+        <h2>Abilities...</h2>
+        <ul>
+            <li>Walk, crouch, run, swim, jump, <span class="calloutfont">double jump</span>, swat, shoot a <span class="calloutfont">laser</span>, backflip while shooting a laser midair, create a shockwave, use a flashlight, and zoom the camera</li>
+            <li>Take instant damage, take <span class="calloutfont">recurring damage</span> from effects like fire, discern <span class="calloutfont">damage types</span> and react with appropriate animation, die, respawn, and heal </li>
+            <li>Receive <span class="calloutfont">lingering effects that modify gameplay</span> while showing the coresponding icon and playing sound and visual effects</li>
+            <li><span class="calloutfont">Interact</span> with static objects like buttons and doors, <span class="calloutfont">communicate</span> with NPC's through a dialog overlay in the HUD, and <span class="calloutfont">ride</span> around on mounts </li>
+            <li>Switch into <span class="calloutfont">photo-mode</span> and take screenshots, more on that<a href="project2.html">here.</a></li>
+            <li>A <span class="calloutfont">prolonged-idling system</span> ensures that after a duration of standing-idle, the cat sits down and switches between a random selection of sitting-idle animations.</li>
+        </ul>
+
+        <div class="video-container">
+            <video controls muted loading="lazy" controlsList="nodownload">
+                <source src="videos/cat_demo_01.mp4" type="video/mp4">
+            </video>
+        </div>
+        <p class="caption">Demo video showing the Player Character's various abilities.</p>
+
+        <div class="video-container">
+            <video controls muted loading="lazy" controlsList="nodownload">
+                <source src="videos/ZC_BuffDebuffEffects.mp4" type="video/mp4">
+            </video>
+        </div>
+        <p class="caption">Demo video showing the different buff/debuff Effects the Cat can receive through gameplay.</p>
+
+        <h2>Approach...</h2>
+
+        <p> This game needed to feel as silly and cat-like as possible. From the animations used to give life to actions, to the method of recharging, to the curve used to animate the cat's blinking, everything was designed with that in mind. I had a lot of fun finding ways to enhance these themes, but I also made sure the game actually worked well and felt smooth to play.</p>
+        
+        <p>I created a set of classes, components, and interfaces that could be used between different character types without requiring they all inherit from the same base class. I wrote custom components for common character needs such as health, launching projectiles, riding mounts, and taking buff/debuff effects. </p>
+
+        <p>I used interfaces when appropriate to simplify the interactions between systems in the game. This makes getting the game's saved data, getting player information, or even updating rotations for animations much more efficient. An example where this is used is when a player overlaps with an instant effect item, that item can tell the player to apply its effect via the interface, without needing to cast to the player class and call a public function for it. This way we reduce coupling and the amount of header files included for every class. Each object only needs to know the least amount of information to accomplish their task.</p>
+
+        <div class="photogrid">
+            <img class="photo" alt="character uml" src="images/proj1/uml_characters.png">
+        </div>
+        <p class="caption">Simplified class structure showing usage of components and interfaces between Player Character and Enemy Character classes.</p>
+
+
+        <h2>Variation...</h2>
+
+        <p>The Cat's main ability is to shoot a laser. It's used to attack enemies, break apart obstacles, and activate certain buttons. I felt like there was enough variety in how the laser mechanic was used, but not enough variation to the laser itself. I decided the behavior should change when the cat is wet or in water.</p>
+
+        <p>Instead of a focused beam of energy, it comes out in a <span class="calloutfont">shockwave</span> that can send archs of electricity at up to 3 targets. This introduced new mechanics, like activating multiple buttons, or attacking multiple enemies at once.</p>
+
+        <p> To do this, when the Player tries to shoot a laser the code first checks if the Cat is wet(via the Buff Component) or if it's touching water to decide if it should generate a shockwave instead of a laser. I wanted the shockwave to work in shallow water, so I added detection in my Water Body Blueprint actor to trigger the Cat's "OnSurfaceTypeChanged" event. This is where we check that the Cat is touching water, and also where it changes the paw-step sound effect from a dry to wet sound.</p> 
+
+        <p>Once it decides to generate a shockwave instead of a laser, it uses the Character Movement Component's IsSwimming() function to decide how far the shockwave can travel. I decided it should travel further while the cat is swimming. Note, I didn't use the IsSwimming() function in the first check because it only checks for water deep enough to swim in, which would've excluded shallow water.</p>
+
+        <p>It spawns the main shockwave VFX with its color set to the Cat's eye color, and the size dependent on the travel distance it determined before.  Next it gets the Pawns within a sphere the size of the travel distance, and if they have the "Shockable" tag, it deals shock damage to them. It stores the first three of the hit Pawns, and spawns an electric arch VFX that reaches out from the Cat to the target. I limited it to three to save on performance.</p>
+
+        <p>Generating the "shockwave" meant creating a convincing VFX for the main "shocks" and an additional "electric arch" VFX that could be spawned per target and dynamically stretched, so that they appear to branch out from the Cat to the target. More on the art side of that<a href="https://www.artstation.com/artwork/KRre1o">here.</a></p>
+
+        <h2>Animation...</h2>
+
+        <p>To integrate the Cat's abilities with their appropriate animations, I extended Unreal's Animation Instance class and used it for the Cat's Animation Blueprint. The Animation Instance tracks several of the Cat's relevant properties such as its current action (as an enum), whether it's swimming, how fast it's moving and in what direction, and many others. This is all used in the Cat's Animation Blueprint within a state tree to determine which animations to play. I also used BlendSpaces where appropriate, such as for transitioning between idling, walking, and running. 
+        </p>
+
+        <div class="photogrid">
+            <img class="photo" alt="character uml" src="images/proj1/char_statetree.png">
+            <img class="photo" alt="character uml" src="images/proj1/char_BS_walkrun.png">
+        </div>
+        <p class="caption">(L) Main State Tree for animating the Cat's various actions. (R) Blend Space for transitioning between walking and running based on ground speed and leaning direction.</p>
+
+        <div class="photogrid">
+            <img class="photo" alt="character uml" src="images/proj1/char_BS_jump.png">
+            <img class="photo" alt="character uml" src="images/proj1/am_idle.png">
+        </div>
+        <p class="caption">(L) Jumping State takes a boolean to change the animation depending on if it's the first or second jump. (R) Animation Montage used to animate the cat during its Prolonged Idle state.</p>
+
+        <h2>Prolonged Idle...</h2>
+        <p>I created a modular and randomized idling system, where the cat will sit down and select random idle animations to play at random intervals. This avoided the monotony of a single idling animation and makes it easy to add, remove or otherwise edit the animations used. This also makes it so that if the Player is using Photo Mode, their cat will sit and essentially pose for the camera!</p>
+
+        <div class="video-container">
+            <video controls muted loading="lazy" controlsList="nodownload">
+                <source src="videos/cat_idle.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <p>To implement this I added a few functions to check which stage of idling, if any, the cat was in. For instance if it's just entered prolonged idle, it will start the Prolonged Idle montage from the first animation, in which the cat sits down. If the cat has already been in the prolonged idle mode, it sets a random timer where upon completion a random choice from the remaining sections of the montage is selected.</p>
+
+        <p> Only the first section in the montage is linear, so the others can be played in any order and will all blend together. If it hasn't entered prolonged idle mode at all, it will simply log the time since the last player action, or scrub it as soon as the Player does something.</p>
+
+        <p>Note that the Cat cannot idle if it's crouching, falling, or otherwise occupied. But the Player can still pan the camera around without disturbing the idle.</p>
+
+        <h2>Bonus...</h2>
+        <p>If you've ever played any of the original Tomb Raider games you'll know that if you spam the jump and dodge keys you can get Lara Croft to perform a bunch of dazzling flips. It doesn't affect gameplay, but it's fun! I wanted to give my players something like that, but didn't have time to animate a thousand different types of flips. I thought it would be funny if when the Cat shoots a laser in the air it's pushed backward by "recoil" and does a backflip. It's not exactly the same, and it's not required to progress through any of the levels, but my play testers liked it!</p>
+
+
+        <h2>Retrospective...</h2>
+        <p>One of the things I really wanted to do for this character design was implement more custom animations and features. For instance, having the cat's head dynamically turn to track the crosshairs, or to leave pawprints behind per each paw, or even to give the player the option to put different hats and accessories on their cat. Unfortunately, I couldn't get the Cat's rig working properly in Unreal, and I wasn't able to access the skeletal mesh's bones individually. It worked in Blender but wouldn't import correctly to Unreal no matter what I did.</p>
+
+        <p>Next time I'll figure it out and get a working character rig in Unreal, but ultimately I think this was a good limitation to overcome. Not everything is going to work the way you want it to, so you have to find different ways of acheiving your design goals!</p>
+
+        <h1><a href="index.html">BACK</a></h1>
+      </div> 
+
+        
+    </main>
+    <div id="footer"></div>
+</body>
+
+<script>
+    // get header
+    fetch('components/header.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('header').innerHTML = data;
+    });
+
+    // get footer
+    fetch('components/footer.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('footer').innerHTML = data;
+    });
+    </script>
+</html>
