@@ -77,7 +77,7 @@
 
         <p>I had some decent practice in Blender before starting work for this game, but I'm by no means an expert. Early on I decided the visual style of this game would be 'mid-poly' and stylized, rather than going for realism. I picked a style I knew I could acheive, and it was just a bonus that it suited the game's silly nature!</p>
 
-        <p>I did all of the sculpting, retopologizing, texturing, and animating in Blender. For the Cat and Rat I was able to use Meta rigs to quickly get them set up for animation. For the other animals I placed the bones by hand and didn't bother with a rig since I knew they only needed a few simple animations.</p>
+        <p>I did all of the sculpting, retopologizing, texturing, and animating in Blender. For the Cat and Rat I was able to use Meta rigs to quickly get them set up for animation. For the other animals I created and placed the bones myself and didn't bother with a rig since I knew they only needed a few simple animations.</p>
 
         <p>I put more work into the cat since it's seen the most. It's used for the playable character but also all of the NPCs, so it had to look cute! It also has the most animations since it had to have all movements, interactions, idling, and NPC actions. For these I tried to find as many reference photos and videos of cats moving as I could, and supplemented by watching my own cat, Franklin.</p>
 
@@ -115,7 +115,7 @@
             <img src="images/proj7/blink_01.png" class="photo" alt="blink material">
             <img src="images/proj7/blink_02.png" class="photo" alt="blink material">
         </div>
-        <p class="caption">Exerpts from the Cat's Material graph. (L) The blend betweeen open and closed eye textures is cached to use in later calculations. NOTE, to improve performance the NPC's only Blink while the Player is talking to them, hence the IF check here to turn Blinking on/off. (R) Emissive eye color is determined by Player and used here with the cached result of eye texture blend.</p>
+        <p class="caption">Exerpts from the Cat's Material graph. (L) The blend between open and closed eye textures is cached to use in later calculations. NOTE, to improve performance the NPC's only Blink while the Player is talking to them, hence the IF check here to turn Blinking on/off. (R) Emissive eye color is determined by Player and used here with the cached result of eye texture blend.</p>
 
         <p>Next, in the Cat's C++ file, I created a dynamic material instance and made it accessible in Blueprints. This is used to apply the User's saved preferences for coat and eye color. I handled that with the following function, which is called at the begining of gameplay.</p>
         <pre>
@@ -156,7 +156,7 @@
        
        <p>There's a lot more I could've done with these characters, like making some NPCs you can actually talk to or making more enemy types like snakes or spiders! But I wanted to actually finish the game, and that meant sacrificing some creativity. Where the models lack in realism or refinement, they make up for by livening the worlds and providing interesting traversal mechanics. Just like I set out to do!</p>
 
-       <h1><a href="index.html">BACK</a></h1>
+       <h1><a class="pulse" href="index.html">BACK</a></h1>
       </div> 
     </main>
     <div id="footer"></div>

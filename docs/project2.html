@@ -86,7 +86,7 @@
                 void APhotographer::Capture()
                 {
                     <span class="code-comment">// Tell PlayerController to play Camera animation</span>
-                    if (ACatPlayerController* CatPlayerController = Cast<ACatPlayerController>(GetController()))
+                    if (ACatPlayerController* CatPlayerController = Cast&ltACatPlayerController&gt(GetController()))
                     {
                         CatPlayerController->PlayCameraAnimation();
                     }
@@ -136,7 +136,7 @@
 
         <p>That said, if I had to do it again I would make some improvements. For one, the Photo Album populates images in an acceptable time frame but it could be faster if it used lower resolution thumbnails of each image instead of the actual full size. It would be easy to store into the JSON file, and I would only need to add a way to create the thumbnail per image after taking a screenshot. Players would still be able to see the higher resolution image when clicking on the thumbnails. Additionally, it would be nice to have arrow buttons when viewing the larger images so that we don't have to exit out just to see the next one. Game play wise, I wanted to add a Photo-Op feature where the player could earn acheivements for taking screenshots in certain locations, but I ran out of time. Maybe for the next game!</p>
         
-        <h1><a href="index.html">BACK</a></h1>
+        <h1><a class="pulse" href="index.html">BACK</a></h1>
       </div>  
     </main>
     <div id="footer"></div>

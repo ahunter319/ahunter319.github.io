@@ -126,3 +126,20 @@ pre {
     background: #2c2e3d;
     color: #ccd0e7;
 }
+
+@keyframes pulse {
+    0% {
+        color:#ef74d6;
+    }
+    50% {
+        color:#7b1dce;
+    }
+    100% {
+        color:#ef74d6;
+    }
+
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}

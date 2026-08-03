@@ -62,7 +62,7 @@
 
         <p>I created three base classes to help me craft unique obstacles and puzzles. The <span class="calloutfont">Activatable Base</span> class is used for any actor that needs to be activated or deactivated by some player action. The Jump Rings, Moving Platforms, Floor Spikes, and many others all use this class as their parent in their Blueprints.</p> 
             
-        <p>The <span class="calloutfont">Activation Switch</span> class is used for the different buttons in the game. But it's set up so that it would be easy to add other switch types like a lever or keypad. It inherits from the Item class so that Player interaction is already built in.</p>  
+        <p>The <span class="calloutfont">Activation Switch</span> class is used for the different buttons in the game. It's set up so that it would be easy to add other switch types like a lever or keypad. It inherits from the Item class so that Player interaction is already built in.</p>  
             
         <p> The Activation Switch and Activatable Base classes made it easy to set up direct one to one puzzles, where you press a button and something activates, but I wanted to make more complex systems. I created the <span class="calloutfont">Switch Monitor</span> class to manage groups of switches and their targets. This way a puzzle could involve mutliple switches that may need to be set in a certain pattern in order to activate or deactivate a collection of objects. It also saves the state of its targets, so that if the Player has already solved a puzzle they don't need to do it again when returning to a saved game.</p>
 
@@ -101,11 +101,11 @@
         <p class="caption">(L) Another four button puzzle. Each of the hexagonal rocks has a button on its side, two aren't visible here due to the camera angle. To solve this puzzle and deactivate the forcefield (the blue wall in the background), players must activate the correct buttons within a time limit. I used glowing blue spores and mushrooms throughout this level to signify electric activity. You can see the spores are only on three of the four rocks, implying those buttons are the ones that need to be activated.</p>
 
         <h2>Retrospective...</h2>
-        <p>It was pretty easy to create unique puzzles once I got all of the base classes working. That said, there's always room for improvement. One thing I'd do differently is the buttons. They all inherit from the Item class because it has Player interaction already set up, but only the pressable button actually needs this! I added the shockable and shootable buttons after already setting up pressable buttons, so that's why I just used the same parent. But it would've made more sense to create an interface for buttons and switches, or to just use the "Interaction Interface" I'd already created for interactible items, that way the different types wouldn't need to use the same parent class.</p>
+        <p>It was pretty easy to create unique puzzles once I got all of the base classes working. That said, there's always room for improvement. One thing I'd do differently is the buttons. They all inherit from the Item class because it has Player interaction already set up, but only the pressable button actually needs this! I added the shockable and shootable buttons after already setting up pressable buttons, so that's why I just used the same parent class. It would've made more sense to create an interface for buttons and switches, that way the different types wouldn't need to use the same parent class.</p>
 
         <p>I wanted to do more with the Space level, but it was a challenge to come up with obstacles and platforming that didn't rely on the Player needing to jump. Unreal has a "Custom Gravity Zone" plugin that would've been cool to try out here. With it you could set up some neat gravity puzzles. Maybe next time!</p>
 
-        <h1><a href="index.html">BACK</a></h1>
+        <h1><a class="pulse" href="index.html">BACK</a></h1>
       </div> 
 
         
