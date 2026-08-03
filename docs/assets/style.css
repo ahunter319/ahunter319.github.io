@@ -26,7 +26,6 @@ h1 {
     font-weight:400;
     padding-top: 10px;
     padding-bottom:20px;
-    margin:0px;
 }
 
 h2 {
@@ -90,12 +89,6 @@ pre {
 
 .topic {
     padding-bottom: 10px;
-}
-
-
-.andada-pro {
-  font-family: "Andada Pro", serif;
-  font-optical-sizing: auto;
 }
 
 .photo {
