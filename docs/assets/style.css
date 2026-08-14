@@ -3,13 +3,22 @@ body {
     padding-right: 120px;
     padding-top: 40px;
     padding-bottom: 40px;
-
     font-family: 'Rajdhani', sans-serif;
     font-weight: 400;
     font-size: 100%;
     color: #050A30;
 
     overflow: auto;
+}
+
+@media screen and (max-width: 900px)
+{
+    body{
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
 }
 
 p {
